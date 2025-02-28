@@ -16,13 +16,30 @@
       margin: 0;
       height: 100%;
       width: 100%;
-    }
+      .addRecordBtn {
+      position: absolute;
+      z-index: 10;
+      top: 10px;
+      right: 10px;
+      background-color: #0079c1;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      }
+      .addRecordBtn:hover {
+      background-color: #005a87;
+      }
+      }
     </style>
     <script>
       require([
         "esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate","esri/widgets/Expand", 
-        "esri/widgets/Search"
-        ],(esriConfig, Map, MapView, Locate, Expand, Search) => {
+        "esri/widgets/Search", "esri/layers/FeatureLayer"
+        ],(esriConfig, Map, MapView, Locate, Expand, Search, FeatureLayer) => {
       
           esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurHJHfSmD6Cm_uV3pceVBDTiGAuoxaiNeGNYE1FhZE4iS7OQGQaHf26579IbGOgWT6YA608K2YFeRi-fMX1ZwN7ytSFcC1EZ-rW4xikf9ZMlYfOyvdysX8Sf0kqyNBBq0d_HiW2S5VnGXklVJGUX_8q3JBWItTG5s-Q9hpTp6ddBgwM6bDnDuwjvwqC17LNXkkxZNt-PyTv1IjiVXGVLcDDk.AT1_vp0kXsvd";
         
@@ -49,7 +66,7 @@
             content: search,
             expandIconClass: "esri-icon-search",
             expanded: false,
-            closeOnEsc: false,  //edited
+            closeOnEsc: true
           });
           
           // Add the locate widget to the top left corner of the view
@@ -60,13 +77,22 @@
           view.ui.add(expand, {
                 position: "top-right"
             });
+          
+          const layer = new FeatureLayer({ 
+            // URL to the service 
+            url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_28d9d3b5ea7c4380b90419f9e8e22c4c_results/FeatureServer"
+          });
+
+          map.add(layer);
         });
     </script>
 
   </head>
   <body>
    <!-- hello world text to check if everything worked -->
-
+    
+    <a href="https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_28d9d3b5ea7c4380b90419f9e8e22c4c_results/FeatureServer"target="_blank" class="addRecordBtn">Add Record</a>
+   
     <div id="viewDiv"></div>
 
   </body>
