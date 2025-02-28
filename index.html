@@ -75,7 +75,7 @@
           });
 
           view.ui.add(expand, {
-                position: "top-right"
+                position: "bottom-right"
             });
           
           const layer = new FeatureLayer({ 
@@ -83,9 +83,7 @@
             url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_28d9d3b5ea7c4380b90419f9e8e22c4c_results/FeatureServer"
           });
 
-          map.add(layer,{
-            position: "bottom-right"
-          });
+          map.add(layer);
         });
     </script>
 
