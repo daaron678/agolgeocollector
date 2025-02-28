@@ -46,15 +46,17 @@
             view: view
           });
 
-          view.ui.add(search, {
-            position: "top-right"
-          })
-
           const expand = new Expand({
             view: view,
             content: search,
-            closeOnEsc: false,
+            expandIconClass: "esri-icon-search",
+            expanded: false,
+            closeOnEsc: true,
           });
+
+          view.ui.add(expand, {
+                position: "top-right"
+            });
          });
     </script>
 
